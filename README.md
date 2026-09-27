@@ -202,3 +202,4 @@ python3 scripts/indexnow_submit.py
 | [TERMS.md](TERMS.md) | **Terms, responsibilities & guarantees** — who is responsible for what, and exactly what is **not** guaranteed (rankings, traffic, AI citations, revenue). |
 
 **One-line version:** *you* are responsible for what you publish and for following search-engine guidelines and the law; the author provides this toolkit **"as is", with no guaranteed outcomes**.
+# seo-skillpack
