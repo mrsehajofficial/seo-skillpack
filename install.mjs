@@ -8,8 +8,11 @@
  *
  * Targets:
  *   ~/.agents/AGENTS.md   -> Cline + any tool reading cross-tool AGENTS.md
- *   ~/.gemini/AGENTS.md   -> Antigravity global rules (CLI / IDE / 2.0)
+ *   ~/.gemini/GEMINI.md   -> Antigravity / Gemini global rules (CLI / IDE / 2.0)
  *   ~/.claude/CLAUDE.md   -> Claude Code user-level memory
+ *
+ * Note: Antigravity does NOT read ~/.gemini/AGENTS.md — only GEMINI.md.
+ *       Any block an earlier version put there is purged as a legacy target.
  *
  * Usage:
  *   node install.mjs              install / update (idempotent, marker-based)
@@ -41,8 +44,16 @@ const GITHUB_RAW = "https://raw.githubusercontent.com/mrsehajofficial/seo-skillp
 const home = os.homedir();
 const TARGETS = [
   { file: path.join(home, ".agents", "AGENTS.md"), why: "Cline + cross-tool AGENTS.md readers" },
-  { file: path.join(home, ".gemini", "AGENTS.md"), why: "Antigravity global rules" },
+  { file: path.join(home, ".gemini", "GEMINI.md"), why: "Antigravity / Gemini global rules" },
   { file: path.join(home, ".claude", "CLAUDE.md"), why: "Claude Code user memory" },
+];
+
+/**
+ * Antigravity ignores ~/.gemini/AGENTS.md (it only reads GEMINI.md), so any
+ * block installed there by an earlier version is removed on every run.
+ */
+const LEGACY_TARGETS = [
+  { file: path.join(home, ".gemini", "AGENTS.md"), why: "legacy path — Antigravity ignores AGENTS.md" },
 ];
 
 function escapeRegExp(s) {
@@ -132,6 +143,14 @@ for (const { file, why } of TARGETS) {
   console.log(`             ${why}`);
 }
 
+// Always purge the block from legacy locations (on install AND uninstall).
+for (const { file, why } of LEGACY_TARGETS) {
+  const status = removeBlock(file);
+  if (status === "absent") continue;
+  console.log(`  [${status.padEnd(9)}] ${file}`);
+  console.log(`             ${why}`);
+}
+
 console.log(uninstall
   ? "\n✅ Uninstalled. Nothing was left behind (projects were never touched)."
   : `
@@ -139,7 +158,7 @@ console.log(uninstall
 
 Next steps:
   • Cline        → open Rules panel; the block appears in Global rules.
-  • Antigravity  → Customizations → Rules → Global (or check ~/.gemini/AGENTS.md).
+  • Antigravity  → Customizations → Rules → Global (or check ~/.gemini/GEMINI.md).
   • Claude Code  → auto-loads ~/.claude/CLAUDE.md as user memory.
   • Cursor / Windsurf / ChatGPT / Gemini web → no global file support:
     paste the block from UNIVERSAL-PROMPT.md, or send its URL and ask the

@@ -1,12 +1,15 @@
 # 🏆 SEO Skillpack — Universal SEO & AI Search Engine Toolkit
-### *A Production-Tested Blueprint for Technical SEO, Rich Results & AI Search Citations*
-### *Compatible with ANY Tech Stack: Static HTML, Next.js, Python (Flask/Django), PHP/WordPress, Astro, Nuxt, SvelteKit & More*
+
+### _A Production-Tested Blueprint for Technical SEO, Rich Results & AI Search Citations_
+
+### _Compatible with ANY Tech Stack: Static HTML, Next.js, Python (Flask/Django), PHP/WordPress, Astro, Nuxt, SvelteKit & More_
 
 **SEO Skillpack** is a **universal, framework-agnostic SEO & GEO (Generative Engine Optimization) toolkit**. It captures the architecture, Schema.org knowledge graph, metadata pipeline, asset versioning, and maintenance protocols used on a real portfolio that earned strong organic visibility and citations in Google AI Overviews.
 
 Whether you are building with **pure Static HTML**, **Next.js**, **Python (Flask/Django)**, **PHP/WordPress**, or **Astro/Nuxt**, this template gives you ready-to-use drop-in files, universal configs, automated validation scripts, and a master AI Prompt to apply this blueprint to any project instantly.
 
 > ## ⚖️ Honest Expectations Disclaimer
+>
 > - **No rankings, traffic, or AI citations are guaranteed.** Results depend on content quality, competition, authority, and search-engine algorithms — and they vary from site to site.
 > - Everything here is **white-hat and educational**: standard practices aligned with Google's search-essential guidelines. You are responsible for complying with search-engine guidelines, data-protection laws, and platform terms of service.
 > - **No affiliation, sponsorship, or endorsement** by Google, Bing, OpenAI, Anthropic, or Perplexity is implied.
@@ -21,6 +24,7 @@ Starting a new website or working with an AI coding assistant (ChatGPT, Claude, 
 👉 Open **[`AI-PROMPT.md`](AI-PROMPT.md)** and copy the prompt directly into your AI assistant.
 
 The AI will automatically:
+
 1. Detect your website's technology stack.
 2. Select the exact files and adapters needed from this template.
 3. Configure your canonical URLs, entity disambiguation, and JSON-LD schemas.
@@ -36,11 +40,11 @@ You do **not** need to copy this template into your project — and your AI tool
 
 👉 Open **[`UNIVERSAL-PROMPT.md`](UNIVERSAL-PROMPT.md)** and pick one:
 
-| Method | Setup | Works in |
-|---|---|---|
-| **① Global install** *(recommended)* | Run `node install.mjs` **once** | **Cline**, **Antigravity**, **Claude Code**, and any tool that reads `AGENTS.md` / `CLAUDE.md` — in *every* project, forever. Writes only to your home directory (`~/.agents/AGENTS.md`, `~/.gemini/AGENTS.md`, `~/.claude/CLAUDE.md`) |
-| **② Paste the prompt** | Copy the block from `UNIVERSAL-PROMPT.md` | ChatGPT, Gemini, Cursor, Windsurf, Copilot — anything with a chat box |
-| **③ Send the URL** | `Follow https://raw.githubusercontent.com/mrsehajofficial/seo-skillpack/main/UNIVERSAL-PROMPT.md and make my site SEO friendly` | Any tool with web fetch |
+| Method                               | Setup                                                                                                                           | Works in                                                                                                                                                                                                                                             |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **① Global install** _(recommended)_ | Run `node install.mjs` **once**                                                                                                 | **Cline**, **Antigravity**, **Claude Code**, and any tool that reads `AGENTS.md` / `GEMINI.md` / `CLAUDE.md` — in _every_ project, forever. Writes only to your home directory (`~/.agents/AGENTS.md`, `~/.gemini/GEMINI.md`, `~/.claude/CLAUDE.md`) |
+| **② Paste the prompt**               | Copy the block from `UNIVERSAL-PROMPT.md`                                                                                       | ChatGPT, Gemini, Cursor, Windsurf, Copilot — anything with a chat box                                                                                                                                                                                |
+| **③ Send the URL**                   | `Follow https://raw.githubusercontent.com/mrsehajofficial/seo-skillpack/main/UNIVERSAL-PROMPT.md and make my site SEO friendly` | Any tool with web fetch                                                                                                                                                                                                                              |
 
 Then just say **"Make my website SEO friendly."** The AI:
 
@@ -122,13 +126,13 @@ seo-skillpack/
 
 ## 🧭 Tech Stack Quick-Selection Matrix
 
-| If your website is built with: | What to copy from this template: |
-| :--- | :--- |
+| If your website is built with:       | What to copy from this template:                                                  |
+| :----------------------------------- | :-------------------------------------------------------------------------------- |
 | **Pure HTML / CSS / Static Hosting** | Copy `static-html-templates/*` into your root + `config/site-config.example.json` |
-| **Next.js (App Router)** | Copy `app-templates/*`, `lib/*`, `config/site-config.example.ts` |
-| **Python (Flask, Django, FastAPI)** | Read `framework-adapters/python-flask-django.md` + use `scripts/audit_seo.py` |
-| **PHP / WordPress** | Read `framework-adapters/php-wordpress-apache.md` + use `static-html-templates/*` |
-| **Astro / Nuxt / SvelteKit / Vite** | Read `framework-adapters/astro-vite-vue-svelte.md` |
+| **Next.js (App Router)**             | Copy `app-templates/*`, `lib/*`, `config/site-config.example.ts`                  |
+| **Python (Flask, Django, FastAPI)**  | Read `framework-adapters/python-flask-django.md` + use `scripts/audit_seo.py`     |
+| **PHP / WordPress**                  | Read `framework-adapters/php-wordpress-apache.md` + use `static-html-templates/*` |
+| **Astro / Nuxt / SvelteKit / Vite**  | Read `framework-adapters/astro-vite-vue-svelte.md`                                |
 
 ---
 
@@ -137,7 +141,9 @@ seo-skillpack/
 Rankings are never permanent or guaranteed — but consistent maintenance keeps you competitive. These are the four rules that matter most:
 
 ### 1. The Post-Deployment Reindexing Protocol
+
 Whenever you update content, never wait passively:
+
 1. Open [Google Search Console](https://search.google.com/search-console).
 2. Enter the updated URL into **URL Inspection**.
 3. Click **"Test Live URL"** to confirm Googlebot sees the fresh HTML.
@@ -145,19 +151,25 @@ Whenever you update content, never wait passively:
 5. Submit to Bing and AI search via `node scripts/indexnow-submit.mjs` (or `python3 scripts/indexnow_submit.py`).
 
 ### 2. The Asset Cache-Busting Rule (Preventing Stale Image Snippets)
+
 Google Search and social platforms cache OpenGraph images and favicons for 30–90 days.
+
 - **Rule:** Never overwrite an image file in place without changing its filename!
 - Always bump the version suffix: `og-image-v1.png` ➔ `og-image-v2.png`, `favicon-v1.ico` ➔ `favicon-v2.ico`.
 - Re-request indexing. Google will typically re-fetch the new filename promptly.
 
 ### 3. 4-Point Entity Disambiguation for AI Search (Google AI Overviews & Gemini)
+
 When someone searches for you in Google AI Mode, Gemini or ChatGPT Search may confuse you with someone else sharing a similar name.
+
 - Keep your `disambiguatingDescription` updated in JSON-LD and `/llms-full.txt`.
 - Connect all verified external links in `sameAs` (GitHub, LinkedIn, Twitter/X).
 - Clearly list your verified projects (e.g. GitHub repos and live apps) so the AI citations point directly to you.
 
 ### 4. Freshness Signals (`dateModified`)
+
 Search engines favor actively maintained sites:
+
 - Every major page includes `dateModified` in its JSON-LD schema.
 - Every sitemap build updates `lastModified` with the current build timestamp.
 - This proves to Googlebot that your site is actively maintained.
@@ -195,11 +207,12 @@ python3 scripts/indexnow_submit.py
 
 ## 📜 License, Privacy & Terms
 
-| Document | What it covers |
-|---|---|
-| [LICENSE](LICENSE) | **Apache License 2.0** — use, modify, and share freely; includes an express patent grant. |
-| [PRIVACY.md](PRIVACY.md) | **Privacy Policy** — this project collects **zero data** and runs entirely on your machine. |
-| [TERMS.md](TERMS.md) | **Terms, responsibilities & guarantees** — who is responsible for what, and exactly what is **not** guaranteed (rankings, traffic, AI citations, revenue). |
+| Document                 | What it covers                                                                                                                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [LICENSE](LICENSE)       | **Apache License 2.0** — use, modify, and share freely; includes an express patent grant.                                                                  |
+| [PRIVACY.md](PRIVACY.md) | **Privacy Policy** — this project collects **zero data** and runs entirely on your machine.                                                                |
+| [TERMS.md](TERMS.md)     | **Terms, responsibilities & guarantees** — who is responsible for what, and exactly what is **not** guaranteed (rankings, traffic, AI citations, revenue). |
 
-**One-line version:** *you* are responsible for what you publish and for following search-engine guidelines and the law; the author provides this toolkit **"as is", with no guaranteed outcomes**.
+**One-line version:** _you_ are responsible for what you publish and for following search-engine guidelines and the law; the author provides this toolkit **"as is", with no guaranteed outcomes**.
+
 # seo-skillpack

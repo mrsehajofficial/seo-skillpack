@@ -6,7 +6,7 @@
 
 | | How | Best for |
 |---|---|---|
-| **① One-time global install** *(recommended)* | Run `node install.mjs` from this folder **once**. It adds a small rules block to your tool's **global** instructions (`~/.agents/AGENTS.md`, `~/.gemini/AGENTS.md`, `~/.claude/CLAUDE.md`) — **nothing is written into any project**. | Cline, Antigravity, Claude Code, and any tool that reads `AGENTS.md` / `CLAUDE.md` — available in *every* project, forever |
+| **① One-time global install** *(recommended)* | Run `node install.mjs` from this folder **once**. It adds a small rules block to your tool's **global** instructions (`~/.agents/AGENTS.md`, `~/.gemini/GEMINI.md`, `~/.claude/CLAUDE.md`) — **nothing is written into any project**. | Cline, Antigravity, Claude Code, and any tool that reads `AGENTS.md` / `GEMINI.md` / `CLAUDE.md` — available in *every* project, forever |
 | **② Paste** | Copy the prompt block below into any chat or agent. | ChatGPT, Gemini, Cursor, Windsurf, Copilot, one-off use |
 | **③ Point at it** | Send: `Follow https://raw.githubusercontent.com/mrsehajofficial/seo-skillpack/main/UNIVERSAL-PROMPT.md and make my site SEO friendly` | Tools with web-fetch |
 

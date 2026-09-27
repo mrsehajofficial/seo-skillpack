@@ -26,7 +26,7 @@ We do not sell, share, rent, or analyze data — because none exists.
 
 | Component | What it does | Network traffic |
 |---|---|---|
-| `install.mjs` | Writes or removes a small text block in `~/.agents/AGENTS.md`, `~/.gemini/AGENTS.md`, `~/.claude/CLAUDE.md` | **None** — local file I/O only |
+| `install.mjs` | Writes or removes a small text block in `~/.agents/AGENTS.md`, `~/.gemini/GEMINI.md`, `~/.claude/CLAUDE.md` (and purges any legacy block left in `~/.gemini/AGENTS.md` by older versions) | **None** — local file I/O only |
 | `scripts/audit-seo.mjs` · `scripts/audit_seo.py` | Read local project files and fetch pages for SEO checks | **Only** the site URL *you* pass in (your site or `localhost`); output printed to your terminal |
 | `scripts/indexnow-submit.*` · `scripts/ping-sitemap.*` | Submit your site's URLs to search engines | Sends your **site URLs** (not personal data) to IndexNow (Bing/Yandex/Seznam) / search engines — **only when you run them, on purpose** |
 | The AI prompt | Instructs the AI tool *you* chose to inspect your project | Your project content goes to **that AI provider** under their privacy policy — never to us |
