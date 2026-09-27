@@ -1,0 +1,8 @@
+<!--
+  Google Search Console HTML Verification File Template
+  Rename this file to match your Google Search Console token, e.g.:
+  google1234567890abcdef.html
+  Place in the /public folder so it is served at:
+  https://yourdomain.com/google1234567890abcdef.html
+-->
+google-site-verification: google1234567890abcdef.html

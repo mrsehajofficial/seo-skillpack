@@ -1,0 +1,42 @@
+import { MetadataRoute } from "next";
+import { SITE_HOST, SITE_URL, absoluteUrl } from "@/lib/site"; // Adjust import path
+
+/**
+ * ============================================================================
+ * PRODUCTION ROBOTS.TXT (Next.js App Router)
+ * ============================================================================
+ *
+ * Why this matters for indexing & AI Discovery:
+ * 1. Explicitly welcomes both traditional search engines (Googlebot, Bingbot)
+ *    AND modern generative AI search crawlers (GPTBot, ClaudeBot, PerplexityBot).
+ *    Allowing AI crawlers helps your portfolio/brand get cited in AI Overviews.
+ * 2. Blocks internal API routes or admin panels from wasting crawler budget.
+ * 3. Declares the authoritative sitemap and canonical host hint.
+ */
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/private/"],
+      },
+      // Generative Engine Optimization (GEO): Ensure AI answer engines can crawl
+      {
+        userAgent: [
+          "GPTBot",
+          "ChatGPT-User",
+          "ClaudeBot",
+          "PerplexityBot",
+          "Google-Extended",
+          "Applebot-Extended",
+        ],
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/", "/private/"],
+      },
+    ],
+    sitemap: absoluteUrl("/sitemap.xml"),
+    host: SITE_HOST,
+  };
+}

@@ -1,0 +1,46 @@
+import { MetadataRoute } from "next";
+import { SITE_URL, absoluteUrl } from "@/lib/site"; // Adjust import path
+
+/**
+ * ============================================================================
+ * DYNAMIC XML SITEMAP (Next.js App Router)
+ * ============================================================================
+ *
+ * Why this matters for crawl health & rankings:
+ * 1. Synchronized BUILD_TIME: All URLs share the same build timestamp, signaling
+ *    a clean, freshly updated site architecture to search crawlers.
+ * 2. Proper priority distribution: Focuses Googlebot crawl budget on the most
+ *    important landing pages first.
+ * 3. 100% Canonical Alignment: Automatically prefixes paths with the exact
+ *    canonical origin constant, preventing redirect loops or 301 penalties.
+ */
+
+type ChangeFreq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+
+interface RouteConfig {
+  path: string;
+  changeFrequency: ChangeFreq;
+  priority: number;
+}
+
+// Define all indexable pages on your site
+const ROUTES: readonly RouteConfig[] = [
+  { path: "/", changeFrequency: "weekly", priority: 1.0 },
+  { path: "/about", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/work", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/stack", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/faq", changeFrequency: "monthly", priority: 0.8 },
+  // Add additional static or dynamic routes here
+];
+
+// Single unified timestamp for this entire build
+const BUILD_TIME = new Date();
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return ROUTES.map(({ path, changeFrequency, priority }) => ({
+    url: path === "/" ? SITE_URL : absoluteUrl(path),
+    lastModified: BUILD_TIME,
+    changeFrequency,
+    priority,
+  }));
+}

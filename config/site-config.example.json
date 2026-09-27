@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "comment": "Universal Single Source of Truth for any programming language or static generator (Python, PHP, Go, Ruby, Node, Static HTML)",
+  "siteUrl": "https://yourdomain.com/",
+  "siteName": "Alex Mercer Portfolio",
+  "shortName": "Alex Mercer",
+  "siteTitle": "Alex Mercer — Senior AI & Full-Stack Systems Engineer",
+  "siteDescription": "Alex Mercer designs autonomous LLM agent systems, high-throughput cloud backends, and responsive web platforms. Available for select consulting and remote roles.",
+  "defaultKeywords": [
+    "AI Systems Engineer",
+    "Full-Stack Developer",
+    "LLM Integration",
+    "Autonomous Agents",
+    "Cloud Architecture",
+    "Python Backend",
+    "Software Engineering Portfolio"
+  ],
+  "themeColor": "#0f172a",
+  "backgroundColor": "#ffffff",
+  "ogImage": {
+    "url": "/og-image-v1.png",
+    "width": 1200,
+    "height": 630,
+    "alt": "Alex Mercer — Senior AI & Full-Stack Systems Engineer"
+  },
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://www.linkedin.com/in/yourusername/",
+    "twitter": "https://x.com/yourusername",
+    "instagram": "https://www.instagram.com/yourusername/",
+    "personalProjects": [
+      "https://github.com/yourusername/flagship-project",
+      "https://flagship-demo.com"
+    ]
+  },
+  "entity": {
+    "type": "Person",
+    "name": "Alex Mercer",
+    "givenName": "Alex",
+    "familyName": "Mercer",
+    "alternateName": "Alex",
+    "handle": "yourusername",
+    "jobTitle": "Senior AI & Full-Stack Systems Engineer",
+    "bio": "Alex Mercer is a Senior AI Systems Engineer specializing in autonomous multi-agent architectures, scalable microservices, and AI-driven automation workflows.",
+    "email": "contact@yourdomain.com",
+    "country": "US",
+    "disambiguation": "Senior AI Systems Engineer based in San Francisco. Known on GitHub as @yourusername. Not to be confused with fictional characters, musicians, or athletes sharing the name Alex Mercer.",
+    "skillsAndTopics": [
+      "AI Systems Engineering",
+      "Autonomous Agents",
+      "Retrieval-Augmented Generation (RAG)",
+      "Python Microservices",
+      "Distributed Systems",
+      "Vector Databases"
+    ]
+  },
+  "searchVerification": {
+    "google": "google1234567890abcdef.html",
+    "bing": "bing-verification-token"
+  }
+}

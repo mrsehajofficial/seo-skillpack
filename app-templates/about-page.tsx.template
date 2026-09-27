@@ -1,0 +1,76 @@
+import type { Metadata } from "next";
+import { SITE_CONFIG } from "@/config/site-config.example"; // Adjust import path
+import { SITE_URL, absoluteUrl } from "@/lib/site";
+import { getPrimaryEntityNode } from "@/lib/entity";
+import { getProfilePageSchema, buildJsonLdGraph } from "@/lib/jsonld";
+import { buildPageMetadata } from "@/lib/metadata";
+
+/**
+ * ============================================================================
+ * ABOUT / PROFILE PAGE TEMPLATE (With Unified Identity Schema)
+ * ============================================================================
+ *
+ * Why this boosts authority:
+ * Search engines look for author bio and experience (E-E-A-T).
+ * By embedding the ProfilePage schema linked to the SAME entity @id as the
+ * homepage, Google connects all page authority into one unified entity.
+ */
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "About: Background, Experience & Technical Architecture",
+  description:
+    "Learn about Alex Mercer's engineering journey, systems architecture philosophy, core competencies, and availability for contract and full-time roles.",
+  path: "/about",
+  type: "profile",
+});
+
+// JSON-LD Graph for this specific page
+const pageJsonLd = buildJsonLdGraph([
+  getProfilePageSchema("/about"),
+  getPrimaryEntityNode({
+    // Optional page-specific entity overrides
+    description:
+      "Alex Mercer builds high-throughput distributed systems and autonomous AI agent workflows.",
+  }),
+]);
+
+export default function AboutPage() {
+  return (
+    <>
+      {/* Page-level Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
+      />
+
+      <article className="container py-12">
+        <header className="mb-8">
+          <p className="text-sm font-mono text-muted">PROFILE & EXPERTISE</p>
+          <h1 className="text-4xl font-bold tracking-tight">
+            Engineering Systems That Scale Deterministically
+          </h1>
+        </header>
+
+        <section className="prose max-w-none">
+          <p className="lead text-xl">
+            I am a Senior AI & Full-Stack Systems Engineer specializing in
+            turning manual workflows into automated code pipelines and reliable
+            backend systems.
+          </p>
+
+          <h2>Core Engineering Principles</h2>
+          <ul>
+            <li>
+              <strong>Deterministic over Stochastic:</strong> AI outputs must be
+              governed by strict schema validation and bounded tool calls.
+            </li>
+            <li>
+              <strong>Observable & Resilient:</strong> Every service is designed
+              with telemetry, structured logging, and automated recovery.
+            </li>
+          </ul>
+        </section>
+      </article>
+    </>
+  );
+}

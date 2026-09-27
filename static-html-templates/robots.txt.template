@@ -1,0 +1,45 @@
+# ==============================================================================
+# PRODUCTION ROBOTS.TXT (Static / Universal)
+# ==============================================================================
+#
+# Welcomes traditional search crawlers and AI search bots (GPTBot, ClaudeBot, PerplexityBot)
+# for maximum visibility in Google Search, Bing, and AI Overviews.
+
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+
+# Generative Engine Optimization (GEO): Explicitly allow AI crawlers to fetch context
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Canonical Sitemap Declaration
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Canonical Host Directive (honored by Yandex and Bing)
+Host: yourdomain.com

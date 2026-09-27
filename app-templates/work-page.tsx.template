@@ -1,0 +1,82 @@
+import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getSoftwareApplicationSchema, buildJsonLdGraph } from "@/lib/jsonld";
+
+/**
+ * ============================================================================
+ * WORK & CASE STUDIES PAGE TEMPLATE (With SoftwareApplication Schema)
+ * ============================================================================
+ *
+ * Why this is vital for technical authority:
+ * Google identifies projects, code repositories, and software products as
+ * distinct entities. When someone searches for your project name or related
+ * tools, Google ranks your page as the authoritative primary source.
+ */
+
+const FEATURED_PROJECTS = [
+  {
+    name: "Aegis Moderation Engine",
+    description:
+      "Asynchronous Python business bot engineered for deterministic group moderation, rate-limiting, and Telegram Business CRM integration.",
+    codeRepository: "https://github.com/yourusername/aegis",
+    applicationCategory: "BusinessApplication",
+    url: "/work#aegis",
+  },
+  {
+    name: "Amai Yuki Real-Time Protocol",
+    description:
+      "Cross-platform real-time messaging application featuring custom protocol architecture and integrated LLM chat workflows.",
+    codeRepository: "https://github.com/yourusername/amai-yuki",
+    applicationCategory: "CommunicationApplication",
+    url: "/work#amai-yuki",
+  },
+];
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Engineering Portfolio & Production Case Studies",
+  description:
+    "Explore production-grade software architectures, open-source repositories, and verified engineering case studies.",
+  path: "/work",
+});
+
+const workJsonLd = buildJsonLdGraph(
+  FEATURED_PROJECTS.map((proj) => getSoftwareApplicationSchema(proj))
+);
+
+export default function WorkPage() {
+  return (
+    <>
+      {/* SoftwareApplication Schema Graph */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workJsonLd) }}
+      />
+
+      <section className="container py-12">
+        <header className="mb-10">
+          <p className="text-sm font-mono text-muted">CASE STUDIES</p>
+          <h1 className="text-4xl font-bold tracking-tight">
+            Production Software & Architecture
+          </h1>
+        </header>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {FEATURED_PROJECTS.map((project, index) => (
+            <article key={index} className="border rounded-xl p-6 shadow-sm">
+              <h2 className="text-2xl font-bold mb-2">{project.name}</h2>
+              <p className="text-muted mb-4">{project.description}</p>
+              <a
+                href={project.codeRepository}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary font-medium hover:underline"
+              >
+                View Repository →
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}

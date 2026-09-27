@@ -1,0 +1,71 @@
+import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getFAQSchema } from "@/lib/jsonld";
+
+/**
+ * ============================================================================
+ * FAQ PAGE TEMPLATE (With FAQPage Schema for Rich Snippets)
+ * ============================================================================
+ *
+ * Why this boosts CTR & rich results:
+ * Pages with valid FAQPage schema can qualify for interactive accordion
+ * dropdowns directly on the Google Search results page, expanding your
+ * vertical screen real estate and making your listing more visible!
+ */
+
+const FAQS = [
+  {
+    question: "What core technologies and frameworks do you specialize in?",
+    answer:
+      "I specialize in Python (Flask/FastAPI, AsyncIO, SQLAlchemy), TypeScript (Next.js, Node.js), LLM orchestration (OpenAI, Gemini APIs, RAG architectures), and cloud infrastructure.",
+  },
+  {
+    question: "Are you available for contract or full-time roles?",
+    answer:
+      "Yes, I am actively taking on select freelance engineering projects and evaluating high-impact full-time remote engineering positions worldwide.",
+  },
+  {
+    question: "How do you ensure AI agents do not hallucinate?",
+    answer:
+      "By utilizing strict schema enforcement (Pydantic / Zod), grounded retrieval-augmented generation (RAG) with vector indexing, and deterministic tool-use pipelines where external APIs verify all factual outputs.",
+  },
+];
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Frequently Asked Questions — Systems & Availability",
+  description:
+    "Direct answers regarding technical capabilities, engineering stack, rates, project timelines, and remote work availability.",
+  path: "/faq",
+});
+
+const faqJsonLd = getFAQSchema(FAQS, "/faq");
+
+export default function FAQPage() {
+  return (
+    <>
+      {/* FAQ Schema for Google Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
+      <section className="container py-12">
+        <header className="mb-10">
+          <p className="text-sm font-mono text-muted">FREQUENT QUESTIONS</p>
+          <h1 className="text-4xl font-bold tracking-tight">
+            Direct Questions, Fact-Based Answers
+          </h1>
+        </header>
+
+        <div className="space-y-6">
+          {FAQS.map((faq, i) => (
+            <div key={i} className="rounded-lg border p-6">
+              <h2 className="text-xl font-semibold mb-2">{faq.question}</h2>
+              <p className="text-muted leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
